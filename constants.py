@@ -1,0 +1,7 @@
+JIRA_SERVER = ''
+JIRA_API_TOKEN=''
+JIRA_ID = ''
+JIRA_PROJECTID = ''
+
+OPEN_AI_KEY = ''
+OPEN_AI_MODEL = 'gpt-3.5-turbo'
