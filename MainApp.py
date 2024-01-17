@@ -20,6 +20,9 @@ class MainApp:
         
         expnaded_task_scope = self.llm_processor.generate_task_description_from_title(user_task_title)
 
+        if expnaded_task_scope is None:
+            return
+
         self.display_output(user_task_title, expnaded_task_scope)
 
         if jira_use:
@@ -28,12 +31,16 @@ class MainApp:
 
     def get_task_title(self):
         """
-        Prompts the user for the task title.
-        :return: Task title input by the user.
+        Prompts the user for the task title and ensures it is not an empty string.
+        :return: Non-empty task title input by the user.
         """
+        while True:
+            title = input("Enter the title of the task you want a completed scope for: ").strip()
+            if title:
+                return title
+            else:
+                print("The task title cannot be empty. Please enter a valid title.")
 
-        return input("Enter the title of the task you want a completed scope for: ")
-    
     def get_jira_use(self):
         """
         Asks the user if they want to use Jira integration.

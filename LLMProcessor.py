@@ -50,4 +50,9 @@ class LLMProcessor:
         :param max_tokens: Maximum length of the response.
         :return: LLM's response.
         """
-        return self.llm(prompt, max_tokens=max_tokens)
+        try:
+            return self.llm(prompt, max_tokens=max_tokens)
+        except Exception as e:
+            breakpoint()
+            print(f"An error occurred while communicating with the LLM: {e}")
+            return None

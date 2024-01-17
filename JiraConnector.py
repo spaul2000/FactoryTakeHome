@@ -1,5 +1,4 @@
 from jira import JIRA
-import logging
 import constants as C
 
 class JiraConnector:
@@ -33,6 +32,5 @@ class JiraConnector:
             )
             return issue
         except Exception as e:
-            logging.error(f"An error occurred: {e}")
-            logging.error(f"Response: {e.response.text if hasattr(e, 'response') else 'No response'}")
-            return None
+            print(f"An error occurred with uploading ticket to JIRA: {e}")
+            
